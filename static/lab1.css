@@ -4,3 +4,56 @@ img {
     margin-right: auto;
     width: 50%;
 }
+
+#oak {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#st {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-top: 0;
+}
+
+#py {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    margin-top: 0;
+}
+
+#fam {
+    text-align: center;
+    font-style:italic;
+    margin:5%;
+    font-size: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.p {
+    margin: 20px;
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.w {
+    margin: 20px;
+    font-size: 20px;
+    font-style: italic;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:rgb(211, 128, 114);
+}
+
+#wi {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    margin-top: 0;
+}
