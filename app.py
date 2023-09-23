@@ -177,6 +177,7 @@ def winx():
 @app.route("/lab2/example")
 def example():
     name = 'Крамар Дарья, Проворова Елена'
+    nomer_gr = 'ФБИ-11'
     nomer_lab = '2'
-    nomer_k = '3'
-    return render_template ('example.html', name=name, nomer_lab=nomer_lab, nomer_k=nomer_k)
+    nomer_k = '3 курс'
+    return render_template ('example.html', name=name, nomer_gr=nomer_gr, nomer_lab=nomer_lab, nomer_k=nomer_k)
