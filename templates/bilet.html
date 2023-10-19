@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 3{% endblock %}
+
+{% block style %}
+<style>
+    #bilet {
+        border: solid 1px Gainsboro;
+        margin: 50px;
+        padding: 20px;
+        background-color: MistyRose;
+    }
+    div {
+        margin: 15px;
+        font-size: larger;
+    }
+    h1 {
+        color: Maroon;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<a href="/lab3">Вернуться к лабораторной работе 3</a>
+
+    <form id="bilet">
+        <h1>Железнодорожный билет на {{ data }}</h1>
+        <h2>Информация о пассажире:</h2>
+
+        <div>ФИО: {{ user }}</div>
+        <div>Возраст: {{ age }}</div>
+        <div>Полка: {{ polka }}</div>
+        <div>Багаж: {{ bag }}</div>
+        <div>Пункт выезда: {{ vyezs }}</div>
+        <div>Пункт назначения: {{ nazn }}</div>
+        <div>
+            <a href="/lab3/bilet"></a>
+        </div>
+    </form>
+
+    <div>
+        <a href="/lab3/form2">Вернуться к покупке билетов</a>
+    </div>
+{% endblock %}

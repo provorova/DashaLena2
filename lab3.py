@@ -49,4 +49,20 @@ def pay():
 @lab3.route("/lab3/success")
 def success():
     return render_template ('success.html')
-    
+
+
+@lab3.route("/lab3/form2")
+def form2():
+    return render_template ('form2.html')
+
+@lab3.route("/lab3/bilet")
+def bilet():
+    user = request.args.get('user')
+    age = request.args.get('age')
+    vyezs = request.args.get('vyezs')
+    nazn = request.args.get('nazn')
+    polka = request.args.get('polka')
+    bag = request.args.get('bag')
+    data = request.args.get('data')
+    return render_template ('bilet.html', user=user, age=age, vyezs=vyezs, nazn=nazn, 
+                            polka=polka, bag=bag, data=data)

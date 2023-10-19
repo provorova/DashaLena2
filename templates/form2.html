@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 3{% endblock %}
+
+{% block style %}
+<style>
+    #pokupka {
+        margin: 30px;
+        width: fit-content;
+        border-left: solid 2px SteelBlue ;
+        padding-left: 20px;
+    }
+    label {
+        font-size: larger;
+        font-weight: bolder;
+        font-style: italic;
+    }
+    div {
+        margin: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<a href="/lab3">Вернуться к лабораторной работе 3</a>
+    
+    <form id="pokupka" action="/lab3/bilet">
+        <h2 style="color: SteelBlue;">Покупка билета</h2>
+        <label>Ваше ФИО:</label>
+        <div>
+            <input type="text" placeholder="Введите имя пассажира" name="user" value="{{ user or '' }}" required>
+        </div>
+
+        <label>Полка:</label>
+        <div>
+            <select name="polka">
+                <option value="niz" {{polka == 'niz' and 'selected'}}>Нижняя</option>
+                <option value="verh" {{polka == 'verh' and 'selected'}}>Верхняя</option>
+                <option value="nizb" {{polka == 'nizb' and 'selected'}}>Нижняя боковая</option>
+                <option value="verhb" {{polka == 'verhb' and 'selected'}}>Верхняя боковая</option>
+            </select>
+        </div>
+
+        <label>Наличие багажа:</label>
+            <div>
+                <input type="radio" value="ss" name="bag" required>С багажом
+                <input type="radio" value="bez" name="bag">Без багажа
+            </div>
+
+        <label>Ваш возраст:</label>
+        <div>
+            <input type="number" placeholder="Введите возраст" name="age" 
+            value="{{ age or '' }}" min="18" max="120" required>
+        </div>
+
+        <label>Пункт выезда:</label>
+        <div>
+            <input type="text" placeholder="Введите город" name="vyezs" value="{{ vyezs or '' }}" required>
+        </div>
+
+        <label>Пункт назначения:</label>
+        <div>
+            <input type="text" placeholder="Введите город" name="nazn" value="{{ nazn or '' }}" required>
+        </div>
+
+        <label>Дата поездки:</label>
+        <div>
+            <input type="date" placeholder="data" name="data" value="{{ data or '' }}" required>
+        </div>
+
+        <div>
+            <button type="submit">Отправить</button>
+        </div>
+    </form>
+{% endblock %}
