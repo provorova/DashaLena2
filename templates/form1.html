@@ -3,6 +3,7 @@
 {% block lab %}Лабораторная работа 3{% endblock %}
 
 {% block main %}
+<a href="/lab3">Вернуться к лабораторной работе 3</a>
 
     {% if user %}
 
@@ -39,7 +40,7 @@
                 <option value="female" {{sex == 'female' and 'selected'}}>женщина</option>
             </select>
         </div>
-
+        {{ error }}
         <div>
             <button type="submit">Отправить</button>
         </div>
