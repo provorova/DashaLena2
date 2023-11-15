@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 4{% endblock %}
+
+{% block style %}
+<style>
+    form {
+        margin: 15px;
+    }
+    button {
+        margin: 5px;
+    }
+    div{
+        margin: 5px 0 5px 0;
+    }
+    h2 {
+        font-style: italic;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<a href="/lab4">Вернуться к лабораторной работе 4</a>
+
+    {% if result %}
+
+    <h1>Заказ успешно сформирован!</h1>
+    <h2>Вы заказали {{ zerno }}. Вес: {{ ves }}т. {{ result }}</h2>
+
+    <div>
+        <a href="/lab4/zerno">Заказ зерна</a>
+    </div>
+
+    {% else %}
+
+    <h1>Заказ зерна</h1>
+    
+    <form method="post">
+        <label>Зерно:</label>
+        <div>
+            <select name="zerno">
+                <option value="ячмень" {{zerno == 'ячмень' and 'selected'}}>ячмень</option>
+                <option value="овес" {{zerno == 'овес' and 'selected'}}>овес</option>
+                <option value="пшеница" {{zerno == 'пшеница' and 'selected'}}>пшеница</option>
+                <option value="рожь" {{zerno == 'рожь' and 'selected'}}>рожь</option>
+            </select>
+        </div>
+
+        <label>Вес(в тоннах):</label>
+        <div>
+            <input type="number" name="ves" id="ves" value="{{ ves or '' }}">
+            <span class="error">{{ error }}</span>
+        </div>
+
+        <div>
+            <button type="submit">Оформить заказ</button>
+        </div>
+    </form>
+
+    {% endif %}
+   
+{% endblock %}

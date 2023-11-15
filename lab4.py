@@ -55,3 +55,36 @@ def fridge():
         result = f'Установлена температура: {temp} °C'
         result2 = '*'
     return render_template ('fridge.html', temp = temp, error=error, result=result, result2=result2)
+
+
+@lab4.route("/lab4/zerno", methods = ['GET', 'POST'])
+def zerno():
+    if request.method == 'GET':
+        return render_template ('zerno.html')
+    error = {}
+    result = {}
+    price = {}
+    zerno = request.form.get('zerno')
+    ves = request.form.get('ves')
+    if zerno == 'ячмень':
+        price = 12000
+    elif zerno == 'овес':
+        price = 8500
+    elif zerno == 'пшеница':
+        price = 8700
+    else :
+        price = 14000
+
+    if ves == '' :
+        error = 'Не введен вес'
+    elif int(ves) <= 0 :
+        error = 'Неверное значение веса'
+    elif 50 <= int(ves) < 500:
+        price = price * int(ves) * 0.9
+        result = f'Сумма к оплате с учетом скидки 10% за большой объем: {price}'
+    elif int(ves) >= 500 :
+        error = 'Такого объема сейчас нет в наличии, заказ не может быть оформлен, укажите объем меньше'
+    else:
+        price = price * int(ves)
+        result = f'Сумма к оплате: {price}'
+    return render_template ('zerno.html', zerno=zerno, ves = ves, error=error, result=result)
