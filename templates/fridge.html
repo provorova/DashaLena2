@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 4{% endblock %}
+
+{% block style %}
+<style>
+    #blue {
+        color:blue;
+    }
+    span {
+        font-size: larger;
+        margin-left: 5px;
+    }
+    button {
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<a href="/lab4">Вернуться к лабораторной работе 4</a>
+
+    {% if temp %}
+
+    <h2>{{ result }}<span id="blue">{{ result2 }}</span></h2>
+
+    <div>
+        <a href="/lab4/fridge">Установить температуру заново</a>
+    </div>
+
+    {% else %}
+
+    <h1>Холодильник</h1>
+    
+    <form method="post">
+        <label>Введите температуру:</label>
+        <div>
+            <input type="number" name="temp" id="temp" value="{{ temp or '' }}">
+            <span class="error">{{ error }}</span>
+        </div>
+
+        <div>
+            <button type="submit">Установить температуру</button>
+        </div>
+    </form>
+
+    {% endif %}
+   
+{% endblock %}
