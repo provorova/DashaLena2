@@ -95,9 +95,26 @@ def cookies():
         if request.method == 'GET':
             return render_template ('cookies.html')
         
+        error = {}
         color = request.form.get('color')
-        headers = {
-            'Set-Cookie': 'color=' + color + '; path=/',
-            'Location': '/lab4/cookies'
-        }
+        bcolor = request.form.get('bcolor')
+        sizee = request.form.get('sizee')
+
+        if color == bcolor:
+            error['color'] = 'Цвет текста и фона совпадают, выберите другой цвет'
+            return render_template ('cookies.html', error=error)
+        
+        if int(sizee) < 5 :
+            error['sizee'] = 'Недопустимый размер текста, укажите размер от 5px до 30px '
+            return render_template ('cookies.html', error=error)
+        if int(sizee) > 30 :
+            error['sizee'] = 'Недопустимый размер текста, укажите размер от 5px до 30px '
+            return render_template ('cookies.html', error=error)
+
+        headers = [
+            ('Set-Cookie', 'color=' + color + '; path=/'),
+            ('Set-Cookie', 'background_color=' + bcolor + '; path=/'),
+            ('Set-Cookie', 'font_size=' + sizee + '; path=/'),
+            ('Location', '/lab4/cookies')
+        ]
         return '', 303, headers

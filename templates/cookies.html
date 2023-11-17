@@ -5,9 +5,19 @@
 {% block main %}
     <h1>Cookies</h1>
     <form method="post">
+        <div class="error">{{ error.color }}</div>
         <div>
-            <label for="color">Выберите цвет:</label>
+            <label for="color">Выберите цвет текста:</label>
             <input type="color" id="color" name="color">
+        </div>
+        <div>
+            <label for="bcolor">Выберите цвет фона:</label>
+            <input type="color" id="bcolor" name="bcolor">
+        </div>
+        <div>
+            <label for="sizee">Выберите размер шрифта:</label>
+            <input type="number" id="sizee" name="sizee">
+            <span class="error">{{ error.sizee }}</span>
         </div>
         <div>
             <button type="submit">OK</button>
