@@ -7,51 +7,92 @@
         padding: 10px;
         border-bottom: 1px solid grey;
     }    
+    .dmenu{
+        display:inline-block;
+        text-align: left;
+        color:DodgerBlue;
+        font-size:large;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-inline: 15px;
+    }
+    .m {
+        color:DodgerBlue;
+        text-decoration: none;
+    }
+    .b1 {
+        background-color: white;
+        color:DodgerBlue;
+        border-width: 1px;
+        border-color: DodgerBlue;
+        border-radius: 2px;
+    }
+    .b2 {
+        background-color: DodgerBlue;
+        color:white;
+        border-width: 1px;
+        border-color: DodgerBlue;
+        border-radius: 2px;
+    }  
+    .b3 {
+        background-color: AliceBlue;
+        color:DodgerBlue;
+        border-width: 1px;
+        border-color: DodgerBlue;
+        border-radius: 2px;
+    }  
+    label {
+        margin: 5px;
+    }
+    input {
+        margin: 5px;
+    }
+    .l {
+        background-color: MistyRose;
+        padding: 5px;;
+        margin: 5px;
+        border-width: 1px;
+        border-color: pink;
+        border-radius: 2px;
+    }
 </style>
 {% endblock %}
 {% block main %}
 <a href="/lab5">Вернуться к лабораторной работе 5</a>
 
 <div class="menu">
-    <div style="display:inline-block;
-                text-align: left;">База знаний</div>
+    <div class="dmenu" style="font-weight: bolder; font-size: larger; 
+                        text-align: left; width: 20%;">База знаний</div>
+    
+    <div class="dmenu"><a class="m" href="/lab5/articles">Статьи</a></div>
 
-    <div style="display:inline-block;
-                text-align: center"><a href="/lab5/articles">Статьи</a></div>
+    <div class="dmenu"><a class="m" href="/lab5/user_articles">Просмотреть заметки</a></div>
 
-    <div style="display:inline-block;
-                text-align: center"><a href="/lab5/user_articles">Просмотреть заметки</a></div>
+    <div class="dmenu"><a class="m"href="/lab5/new_article">Создать заметку</a></div>
 
-    <div style="display:inline-block;
-                text-align: center"><a href="/lab5/new_article">Создать заметку</a></div>
-
-    <div style="display:inline-block;
-                text-align: right">
+    <div class="dmenu">
                 <form action="/lab5/login">
-                    <button>Логин</button>
+                    <button class="b1">Логин</button>
                 </form>
     </div>
 
-    <div style="display:inline-block;
-                text-align: right">
+    <div class="dmenu">
                 <form action="/lab5/register">
-                    <button>Регистрация</button>    
+                    <button class="b2">Регистрация</button>    
                 </form>
     </div>
 
-    <div style="display:inline-block;
-                text-align: right">
+    <div class="dmenu">
                 <form action="/lab5/exit">
-                    <button>Выход</button>    
+                    <button class="b3">Выход</button>    
                 </form>
     </div>
 
-    <div style="display:inline-block;
-                text-align: right">{{ username }}</div>
+    <div class="dmenu" style="display:inline-block;
+                text-align: right; width:10%">{{ username }}</div>
 </div>
 
 <form method="POST">
-    <h1>Страница авторизации</h1>
+    <h1 style="text-align:center;color: MidnightBlue;">Страница авторизации</h1>
 
     <div class="error">{{ errors }}</div>
     <div>
@@ -64,7 +105,7 @@
         <input type="text" name="password" placeholder="password">
     </div>
 
-    <button type="submit">Войти</button>
+    <button class="l" type="submit">Войти</button>
 </form>
 
 {% endblock %}

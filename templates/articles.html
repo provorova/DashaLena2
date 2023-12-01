@@ -13,6 +13,7 @@
         color:DodgerBlue;
         font-size:large;
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-inline: 15px;
     }
     .m {
         color:DodgerBlue;
@@ -42,12 +43,14 @@
     li {
         padding: 10px;;
         margin: 10px;
+        margin-bottom: 5px;
         font-size: large;
     }
     .l {
         background-color: MistyRose;
-        padding: 5px;;
-        margin: 5px;
+        padding: 5px;
+        margin-top: 5px;
+        margin-left: 5px;
         border-width: 1px;
         border-color: pink;
         border-radius: 2px;
@@ -55,10 +58,14 @@
     .f {
         background-color: OldLace;
         padding: 5px;
-        margin: 5px;
+        margin-left: 5px;
         border-width: 1px;
         border-color: BlanchedAlmond;
         border-radius: 2px;
+    }
+    .s {
+        text-decoration: none;
+        color: MidnightBlue;
     }
 </style>
 {% endblock %}
@@ -66,7 +73,8 @@
 <a href="/lab5">Вернуться к лабораторной работе 5</a>
 
 <div class="menu">
-    <div class="dmenu" style="font-weight: bolder; font-size: larger;">База знаний</div>
+    <div class="dmenu" style="font-weight: bolder; font-size: larger; 
+                        text-align: left; width: 20%;">База знаний</div>
     
     <div class="dmenu"><a class="m" href="/lab5/articles">Статьи</a></div>
 
@@ -93,15 +101,15 @@
     </div>
 
     <div class="dmenu" style="display:inline-block;
-                text-align: right">{{ username }}</div>
+                text-align: right; width:10%">{{ username }}</div>
 </div>
 
-<h1 style="text-align:center">Статьи</h1>
+<h1 style="text-align:center;color: MidnightBlue;">Статьи</h1>
     
     <ul>
     {% if result1 or result2 %}
         {% for result1 in result1 %}
-            <li><a href="/lab5/articles/{{ result1[0] }}">{{ result1[1] }}</a>{{ result1[2] }} likes</li>
+            <li><a class="s" href="/lab5/articles/{{ result1[0] }}">{{ result1[1] }}</a>  {{ result1[2] }} likes</li>
             <form action="/lab5/favorite" method="post">
                 <input type="hidden" name="article_id" value="{{ result1[0] }}">
                 <button class="f" type="submit">Удалить из избранного</button>
@@ -115,7 +123,7 @@
         {% endfor %}    
 
         {% for result2 in result2 %}
-            <li><a href="/lab5/articles/{{ result2[0] }}">{{ result2[1] }}</a>{{ result2[2] }} likes</li>
+            <li><a class="s" href="/lab5/articles/{{ result2[0] }}">{{ result2[1] }}</a>  {{ result2[2] }} likes</li>
             <form action="/lab5/favorite" method="post">
                 <input type="hidden" name="article_id" value="{{ result2[0] }}">
                 <button class="f" type="submit">Добавить в избранное</button>

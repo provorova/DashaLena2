@@ -85,7 +85,7 @@ def registerPage():
     conn.commit()
     dbClose(cur, conn)
 
-    return redirect("/lab5/login", username=visibleUser)
+    return redirect("/lab5/login")
 
 
 @lab5.route("/lab5/login", methods=["GET", "POST"])
@@ -237,10 +237,10 @@ def articles():
         conn = dbConnect()
         cur = conn.cursor()
 
-        cur.execute("SELECT id, title, COALESCE(array_length(likes, 1), 0) as likes_count FROM articles WHERE is_public = %s and %s=ANY(is_favorite);", ("True", userID))
+        cur.execute("SELECT id, title, COALESCE(array_length(likes, 1), 0) as likes_count FROM articles WHERE is_public = %s and %s=ANY(is_favorite);", (True, userID))
         result1 = cur.fetchall()
 
-        cur.execute("SELECT id, title, COALESCE(array_length(likes, 1), 0) as likes_count FROM articles WHERE is_public = %s AND %s != ALL(is_favorite);", ("True", userID))
+        cur.execute("SELECT id, title, COALESCE(array_length(likes, 1), 0) as likes_count FROM articles WHERE is_public = %s AND (%s!=ALL(is_favorite) OR is_favorite IS NULL);", (True, userID))
         result2 = cur.fetchall()
 
         dbClose(cur, conn)
