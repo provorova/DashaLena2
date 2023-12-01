@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 5{% endblock %}
+{% block style %}
+<style>
+    .menu {
+        padding: 10px;
+        border-bottom: 1px solid grey;
+    }    
+    .dmenu{
+        display:inline-block;
+        text-align: left;
+        color:DodgerBlue;
+        font-size:large;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .m {
+        color:DodgerBlue;
+        text-decoration: none;
+    }
+    .b1 {
+        background-color: white;
+        color:DodgerBlue;
+        border-width: 1px;
+        border-color: DodgerBlue;
+        border-radius: 2px;
+    }
+    .b2 {
+        background-color: DodgerBlue;
+        color:white;
+        border-width: 1px;
+        border-color: DodgerBlue;
+        border-radius: 2px;
+    }  
+    .b3 {
+        background-color: AliceBlue;
+        color:DodgerBlue;
+        border-width: 1px;
+        border-color: DodgerBlue;
+        border-radius: 2px;
+    }  
+    li {
+        padding: 10px;;
+        margin: 10px;
+        font-size: large;
+    }
+    .l {
+        background-color: MistyRose;
+        padding: 5px;;
+        margin: 5px;
+        border-width: 1px;
+        border-color: pink;
+        border-radius: 2px;
+    }
+    .f {
+        background-color: OldLace;
+        padding: 5px;
+        margin: 5px;
+        border-width: 1px;
+        border-color: BlanchedAlmond;
+        border-radius: 2px;
+    }
+</style>
+{% endblock %}
+{% block main %}
+<a href="/lab5">Вернуться к лабораторной работе 5</a>
+
+<div class="menu">
+    <div class="dmenu" style="font-weight: bolder; font-size: larger;">База знаний</div>
+    
+    <div class="dmenu"><a class="m" href="/lab5/articles">Статьи</a></div>
+
+    <div class="dmenu"><a class="m" href="/lab5/user_articles">Просмотреть заметки</a></div>
+
+    <div class="dmenu"><a class="m"href="/lab5/new_article">Создать заметку</a></div>
+
+    <div class="dmenu">
+                <form action="/lab5/login">
+                    <button class="b1">Логин</button>
+                </form>
+    </div>
+
+    <div class="dmenu">
+                <form action="/lab5/register">
+                    <button class="b2">Регистрация</button>    
+                </form>
+    </div>
+
+    <div class="dmenu">
+                <form action="/lab5/exit">
+                    <button class="b3">Выход</button>    
+                </form>
+    </div>
+
+    <div class="dmenu" style="display:inline-block;
+                text-align: right">{{ username }}</div>
+</div>
+
+<h1 style="text-align:center">Статьи</h1>
+    
+    <ul>
+    {% if result1 or result2 %}
+        {% for result1 in result1 %}
+            <li><a href="/lab5/articles/{{ result1[0] }}">{{ result1[1] }}</a>{{ result1[2] }} likes</li>
+            <form action="/lab5/favorite" method="post">
+                <input type="hidden" name="article_id" value="{{ result1[0] }}">
+                <button class="f" type="submit">Удалить из избранного</button>
+            </form>
+
+            <form action="/lab5/like" method="post">
+                <input type="hidden" name="article_id" value="{{ result1[0] }}">
+                <button class="l" type="submit">Лайк</button>
+            </form>
+
+        {% endfor %}    
+
+        {% for result2 in result2 %}
+            <li><a href="/lab5/articles/{{ result2[0] }}">{{ result2[1] }}</a>{{ result2[2] }} likes</li>
+            <form action="/lab5/favorite" method="post">
+                <input type="hidden" name="article_id" value="{{ result2[0] }}">
+                <button class="f" type="submit">Добавить в избранное</button>
+            </form>
+
+            <form action="/lab5/like" method="post">
+                <input type="hidden" name="article_id" value="{{ result2[0] }}">
+                <button class="l" type="submit">Лайк</button>
+            </form>
+
+        {% endfor %}
+    </ul>   
+    {% else %}
+        <h2>Опубликованных статей нет</h2>
+    {% endif %}
+
+
+{% endblock %}

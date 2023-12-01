@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 5{% endblock %}
+{% block style %}
+<style>
+    .menu {
+        padding: 10px;
+        border-bottom: 1px solid grey;
+    }    
+</style>
+{% endblock %}
+{% block main %}
+<a href="/lab5">Вернуться к лабораторной работе 5</a>
+<div class="menu">
+    <div style="display:inline-block;
+                text-align: left;">База знаний</div>
+
+    <div style="display:inline-block;
+                text-align: center"><a href="/lab5/articles">Статьи</a></div>
+
+    <div style="display:inline-block;
+                text-align: center"><a href="/lab5/user_articles">Просмотреть заметки</a></div>
+
+    <div style="display:inline-block;
+                text-align: center"><a href="/lab5/new_article">Создать заметку</a></div>
+
+    <div style="display:inline-block;
+                text-align: right">
+                <form action="/lab5/login">
+                    <button>Логин</button>
+                </form>
+    </div>
+
+    <div style="display:inline-block;
+                text-align: right">
+                <form action="/lab5/register">
+                    <button>Регистрация</button>    
+                </form>
+    </div>
+
+    <div style="display:inline-block;
+                text-align: right">
+                <form action="/lab5/exit">
+                    <button>Выход</button>    
+                </form>
+    </div>
+
+    <div style="display:inline-block;
+                text-align: right">{{ username }}</div>
+</div>
+   
+{% endblock %}
