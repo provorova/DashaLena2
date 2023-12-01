@@ -176,7 +176,7 @@ def getArticle(article_id):
         conn = dbConnect()
         cur = conn.cursor()
 
-        cur.execute("SELECT title, article_text FROM articles WHERE id = %s and user_id = %s", (article_id, userID))
+        cur.execute("SELECT title, article_text FROM articles WHERE id = %s and (user_id = %s or is_public = %s) ", (article_id, userID, 'True'))
 
         articleBody = cur.fetchone()
 
