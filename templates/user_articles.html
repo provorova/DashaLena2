@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block lab %}Лабораторная работа 5{% endblock %}
+{% block lab %}Лабораторная работа 6{% endblock %}
 {% block style %}
 <style>
     .menu {
@@ -55,32 +55,32 @@
 </style>
 {% endblock %}
 {% block main %}
-<a href="/lab5">Вернуться к лабораторной работе 5</a>
+<a href="/lab6">Вернуться к лабораторной работе 6</a>
 
 <div class="menu">
     <div class="dmenu" style="font-weight: bolder; font-size: larger; 
                         text-align: left; width: 20%;">База знаний</div>
     
-    <div class="dmenu"><a class="m" href="/lab5/articles">Статьи</a></div>
+    <div class="dmenu"><a class="m" href="/lab6/articles">Статьи</a></div>
 
-    <div class="dmenu"><a class="m" href="/lab5/user_articles">Просмотреть заметки</a></div>
+    <div class="dmenu"><a class="m" href="/lab6/user_articles">Просмотреть заметки</a></div>
 
-    <div class="dmenu"><a class="m"href="/lab5/new_article">Создать заметку</a></div>
+    <div class="dmenu"><a class="m"href="/lab6/new_article">Создать заметку</a></div>
 
     <div class="dmenu">
-                <form action="/lab5/login">
+                <form action="/lab6/login">
                     <button class="b1">Логин</button>
                 </form>
     </div>
 
     <div class="dmenu">
-                <form action="/lab5/register">
+                <form action="/lab6/register">
                     <button class="b2">Регистрация</button>    
                 </form>
     </div>
 
     <div class="dmenu">
-                <form action="/lab5/exit">
+                <form action="/lab6/logout">
                     <button class="b3">Выход</button>    
                 </form>
     </div>
@@ -94,10 +94,10 @@
     <ul>
     {% if result %}
         {% for result in result %}
-            <li><a href="/lab5/articles/{{ result[0] }}">{{ result[1] }}</a></li>
+            <li><a href="/lab5/articles/{{ articles[0] }}">{{ result[1] }}</a></li>
             <form action="/lab5/publish" method="post">
-                <input type="hidden" name="article_id" value="{{ result[0] }}">
-                <input class="f" type="submit" value="{% if result[2] %}Снять с публикации{% else %}Опубликовать{% endif %}">
+                <input type="hidden" name="article_id" value="{{ articles[0] }}">
+                <input class="f" type="submit" value="{% if articles[2] %}Снять с публикации{% else %}Опубликовать{% endif %}">
             </form>
                  
         {% endfor %}
