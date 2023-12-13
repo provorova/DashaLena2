@@ -35,7 +35,7 @@ function Pay() {
     const cvv = document.querySelector('[name=cvv]').value;
 
     const obj = {
-        "method": "get-price",
+        "method": "Pay",
         "params": {
             drink: drink,
             milk: milk, 
@@ -54,7 +54,7 @@ function Pay() {
         return resp.json();
     })
     .then(function(data) {
-        document.querySelector('#error').innerHTML = `${data.result}`
-        document.querySelector('#otvet').innerHTML = `Заказ успешно оплачен!`
+        document.querySelector('#error').innerHTML = `${data.error}`
+        document.querySelector('#result').innerHTML = `${data.result}`
     })
 }

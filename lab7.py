@@ -39,7 +39,7 @@ def calculate_price(params):
         price = 120
     if drink == 'black-tea':
         price = 80
-    else:
+    if drink == 'green-tea':
         price = 70
 
     if milk:
@@ -52,12 +52,12 @@ def calculate_price(params):
 
 def Pay(params):
     card_num = params['card_num']
-    if len(card_num) != 16 or not card_num.isdigit():
-        return {"result": None, "error": "Неверный номер карты"}
-
     cvv = params['cvv']
-    if len(cvv) != 3 or not cvv.isdigit():
-        return {"result": None, "error": "Неверный номер CVV/CVC"}
-
-    price = calculate_price(params)
-    return {"result": f'С карты {card_num} списано {price} руб', "error": None}
+    if len(card_num) != 16 or not card_num.isdigit():
+        return {"result": '', "error": "Неверный номер карты"}
+    else:
+        if len(cvv) != 3 or not cvv.isdigit():
+            return {"result": '', "error": "Неверный номер CVV/CVC"}
+        else:
+            price = calculate_price(params)
+            return {"result": f'С карты {card_num} списано {price} руб', "error": ''}
