@@ -20,8 +20,8 @@ def api():
     if data['method'] == 'get-price':
         return get_price(data['params'])
 
-    if data['method'] == 'pay':
-        return pay(data['params'])
+    if data['method'] == 'Pay':
+        return Pay(data['params'])
 
     abort(400)
 
@@ -50,7 +50,7 @@ def calculate_price(params):
     return price
 
 
-def pay(params):
+def Pay(params):
     card_num = params['card_num']
     if len(card_num) != 16 or not card_num.isdigit():
         return {"result": None, "error": "Неверный номер карты"}

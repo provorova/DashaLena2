@@ -35,4 +35,28 @@
     </div>
 
     <div id="price"></div>
+
+    <div id="pay" style="display: none;">
+        <div id="error"></div>
+        <div>Номер банковской карты:</div>
+        <label>
+            <input type="text" name="card_num">
+        </label>
+
+        <div>Имя держателя карты:</div>
+        <label>
+            <input type="text" name="name">
+        </label>
+
+        <div>Номер CVV:</div>
+        <label>
+            <input type="text" name="cvv" size="3">
+        </label>
+
+        <div>
+            <button onclick="Pay()">Оплатить</button>
+        </div>
+    </div>
+
+    <div id="otvet"></div>
 {% endblock %}
