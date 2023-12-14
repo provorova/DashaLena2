@@ -23,6 +23,7 @@ function getPrice() {
     .then(function(data) {
         document.querySelector('#price').innerHTML = `Цена напитка: ${data.result} руб`
         document.querySelector('#pay').style.display = '';
+        document.querySelector('#message').style.display = 'None';
     })
 }
 
@@ -55,6 +56,43 @@ function Pay() {
     })
     .then(function(data) {
         document.querySelector('#error').innerHTML = `${data.error}`
+        document.querySelector('#result').style.display = '';
         document.querySelector('#result').innerHTML = `${data.result}`
     })
+}
+
+
+function refund() {
+    const card_num = document.querySelector('[name=card_num]').value;
+    const cvv = document.querySelector('[name=cvv]').value;
+    const milk = document.querySelector('[name=milk]').checked;
+    const sugar = document.querySelector('[name=sugar]').checked;
+    const drink = document.querySelector('[name=drink]:checked').value;
+    const obj = {
+        "method": "refund",
+        "params": {
+            card_num: card_num,
+            cvv: cvv,
+            drink: drink,
+            milk: milk, 
+            sugar: sugar
+        }
+    };
+
+    fetch('/lab7/api', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(obj)
+    })
+    .then(function(resp) {
+        return resp.json();
+    })
+    .then(function(data) {
+        document.querySelector('#messag').innerHTML = `${data.errorr}`;
+        document.querySelector('#message').style.display = '';
+        document.querySelector('#message').innerHTML = `${data.resultt}`;
+        document.querySelector('#pay').style.display = 'None';
+        document.querySelector('#result').style.display = 'None';
+    })
+
 }
