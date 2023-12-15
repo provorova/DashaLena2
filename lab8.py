@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, abort, jsonify
+import datetime 
 
 lab8 = Blueprint('lab8', __name__)
 
@@ -40,6 +41,7 @@ def del_course(course_num):
 def put_course(course_num):
     if course_num >= 0 and course_num < (len(courses)):
         course = request.get_json()
+        course["date"] = datetime.datetime.now()
         courses[course_num] = course
         return courses[course_num]
     else:
@@ -49,6 +51,7 @@ def put_course(course_num):
 @lab8.route('/lab8/api/courses/', methods=['POST'])
 def add_course():
     course = request.get_json()
+    course["date"] = datetime.datetime.now()
     courses.append(course)
     return {"num":len(courses)-1}
     

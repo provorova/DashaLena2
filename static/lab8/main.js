@@ -29,10 +29,13 @@ function fillCourseList() {
             let tdActions = document.createElement('td');
             tdActions.append(editButton);
             tdActions.append(delButton);
+            let tdDate = document.createElement('td');
+            tdDate.innerText = courses[i].date || 'Не указано';
   
             tr.append(tdName);
             tr.append(tdVideos);
             tr.append(tdPrice);
+            tr.append(tdDate);
             tr.append(tdActions);
 
             tbody.append(tr);
