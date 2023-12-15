@@ -71,14 +71,15 @@ function addCourse() {
 }
 
 function sendCourse() {
+    const num = document.getElementById('num').value;
     const course = {
         name: document.getElementById('name').value,
         videos: document.getElementById('videos').value,
         price: document.getElementById('price').value
     }
 
-    const url = `/lab8/api/courses/`;
-    const method = 'POST';
+    const url = `/lab8/api/courses/${num}`;
+    const method = num ? 'PUT' : 'POST';
     fetch(url, {
         method: method,
         headers: {"Content-Type": "application/json"},
@@ -88,4 +89,12 @@ function sendCourse() {
         fillCourseList();
         hideModal();
     });
+}
+
+function editCourse(num, course) {
+    document.getElementById('num').value = num;
+    document.getElementById('name').value = course.name;
+    document.getElementById('videos').value = course.videos;
+    document.getElementById('price').value = course.price;
+    showModal();
 }
