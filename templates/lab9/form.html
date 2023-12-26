@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 9{% endblock %}
+
+{% block script %}{% endblock %}
+
+{% block main %}
+<form method="post">
+    <label for="sender_name">Имя отправителя:</label>
+    <input type="text" id="sender_name" name="sender_name"><br>
+    <label for="recipient_name">Имя получателя:</label>
+    <input type="text" id="recipient_name" name="recipient_name"><br>
+    <label for="recipient_gender">Пол получателя (male/female):</label>
+    <input type="text" id="recipient_gender" name="recipient_gender"><br>
+    <input type="submit" value="Отправить">
+</form>
+{% endblock %}
